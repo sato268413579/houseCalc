@@ -10,6 +10,7 @@
         </header>
         @section('content')
         <div>
+            
             @foreach($monthData as $val)
                 <label>{{$val->month}}</label><br>
             @endforeach
