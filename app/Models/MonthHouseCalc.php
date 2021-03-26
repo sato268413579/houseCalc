@@ -11,7 +11,12 @@ class MonthHouseCalc extends Model
     use HasFactory;
     protected $table = 'MonthHouseCalc';
 
-    public function getData(){
-        return DB::table($this->table)->get();
+    /**
+     * 当月のデータ取得
+     */
+    public function getToMonthData(){
+        return DB::table($this->table)
+                ->where('month', date('Y-m'))
+                ->first();
     }
 }

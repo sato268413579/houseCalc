@@ -16,8 +16,8 @@ class MonthHouseCalc extends Migration
         Schema::create('MonthHouseCalc', function (Blueprint $table) {
             $table->increments('id');        // デフォルト
             $table->string('month');        // カラム作成
-            $table->string('created_at');        // カラム作成
-            $table->string('updated_at');        // カラム作成
+            $table->datetime('created_at');        // カラム作成
+            $table->datetime('updated_at');        // カラム作成
         });
     }
 
@@ -28,6 +28,6 @@ class MonthHouseCalc extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('MonthHouseCalc');
     }
 }

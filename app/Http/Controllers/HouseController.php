@@ -10,8 +10,8 @@ class HouseController extends Controller
     public function view(){
 
         $month = new MonthHouseCalc();
-        $monthData = $month->getData();
+        $toMonthData = $month->getToMonthData();
 
-        return view('houseIndex',compact('monthData'));
+        return view('houseIndex',compact('toMonthData'));
     }
 }

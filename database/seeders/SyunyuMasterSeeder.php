@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MonthHouseCalc;
+use App\Models\syunyuMaster;
 
-class MonthHouseCalcSeeder extends Seeder
+class SyunyuMasterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,10 @@ class MonthHouseCalcSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('MonthHouseCalc')->delete();
-
-        for($i = 1; $i <= 12; $i++){
-            \App\Models\MonthHouseCalc::create([
-                'month' => date('Y-').$i,
+        \App\Models\syunyuMaster::create([
+                'syunyu' => '294088',
                 'created_at' => date('Y-m-i'),
                 'updated_at' => date('Y-m-i'),
             ]);
-        }
     }
 }
