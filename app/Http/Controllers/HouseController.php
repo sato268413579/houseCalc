@@ -11,7 +11,7 @@ class HouseController extends Controller
 
         $month = new MonthHouseCalc();
         $toMonthData = $month->getToMonthData();
-
+        dd($toMonthData);
         return view('houseIndex',compact('toMonthData'));
     }
 }

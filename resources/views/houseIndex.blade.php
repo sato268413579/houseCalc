@@ -11,7 +11,7 @@
         @section('content')
         <div>
             
-            <label>{{$toMonthData->month}}</label><br>
+            {{-- <label>{{$toMonthData->month}}</label><br> --}}
         </div>
         
         <div class="form-group">
