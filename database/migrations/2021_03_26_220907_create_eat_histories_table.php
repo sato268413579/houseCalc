@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSyunyuMastersTable extends Migration
+class CreateEatHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateSyunyuMastersTable extends Migration
      */
     public function up()
     {
-        Schema::create('syunyumaster', function (Blueprint $table) {
-            $table->string('syunyu');
+        Schema::create('eat_histories', function (Blueprint $table) {
+            $table->string('month');
+            $table->string('day');
+            $table->integer('pay');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
@@ -27,6 +29,6 @@ class CreateSyunyuMastersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('syunyumaster');
+        Schema::dropIfExists('eat_histories');
     }
 }

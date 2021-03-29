@@ -1,5 +1,6 @@
 function calc(){
-            var syunyu = document.getElementById('syunyu').value;
+            // var syunyu = document.getElementById('syunyu').value;
+            var syunyu = 294088;
             var yatin = document.getElementById('yatin').value;
             var syokuhi = document.getElementById('syokuhi').value;
             var gasudai = document.getElementById('gasudai').value;

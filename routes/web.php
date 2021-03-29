@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'HouseController@view');
+Route::get('/dataCheck', 'HouseController@dataCheck');
+Route::post('/register', 'HouseController@register');

@@ -14,10 +14,20 @@ class MonthHouseCalc extends Migration
     public function up()
     {
         Schema::create('MonthHouseCalc', function (Blueprint $table) {
-            $table->increments('id');        // デフォルト
+            // $table->increments('id');        // デフォルト
             $table->string('month');        // カラム作成
-            $table->datetime('created_at');        // カラム作成
-            $table->datetime('updated_at');        // カラム作成
+            $table->integer('yatin');        // カラム作成
+            $table->integer('eat');        // カラム作成
+            $table->integer('gasu');        // カラム作成
+            $table->integer('denki');        // カラム作成
+            $table->integer('suidou');        // カラム作成
+            $table->integer('tuushin');        // カラム作成
+            $table->integer('loan');        // カラム作成
+            $table->string('comment');        // カラム作成
+            $table->timestamp('created_at');        // カラム作成
+            $table->timestamp('updated_at');        // カラム作成
+
+            $table->unique(['month']);
         });
     }
 
