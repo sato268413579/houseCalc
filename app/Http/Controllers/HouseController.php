@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MonthHouseCalc;
 use App\Models\syunyuMaster;
+use App\Models\EatHistory;
 
 class HouseController extends Controller
 {
@@ -14,13 +15,16 @@ class HouseController extends Controller
     public function view(){
 
         $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData();
+        $toMonthData = $month->getToMonthData() ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
 
         $syunyuModel = new syunyuMaster();
         $syunyu = $syunyuModel->getSyunyu();
 
-        return view('houseIndex',compact('toMonthData', 'syunyu'));
+        $toMonthEat = new EatHistory();
+        $sumEat = $toMonthEat->getToMonthSumPay(date('Y-m'));
+
+        return view('houseIndex',compact('toMonthData', 'syunyu', 'sumEat'));
     }
 
     /**
@@ -28,7 +32,7 @@ class HouseController extends Controller
      */
     public function dataCheck(){
         $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData();
+        $toMonthData = $month->getToMonthData() ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
         $result = 0;
 
@@ -44,6 +48,14 @@ class HouseController extends Controller
      * データ登録
      */
     public function register(Request $request){
+        
+        // $rules = [
+        //     'admin_code' => ['required', 'integer', 'unique:admin'],
+        //     'role' => ['size:1'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed']
+        // ];
+        // $this->validate($request, $rules);
+        
         $postData = json_decode($request->getcontent(), true);
         
         $model = new MonthHouseCalc();

@@ -19,6 +19,7 @@ class EatHistorySeeder extends Seeder
         \App\Models\EatHistory::create([
                 'month' => '2021-01',
                 'day' => '2021-01-01',
+                'oiban' => 0,
                 'pay' => '0',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),

@@ -57,7 +57,10 @@ class MonthHouseCalc extends Model
                           'suidou' => $model['suidou'],
                           'tuushin' => $model['tuushin'],
                           'loan' => $model['loan'],
-                          'comment' => $model['comment']]);
+                          'comment' => $model['comment'],
+                          'created_at' => date('Y-m-d H:i:s'),
+                          'updated_at' => date('Y-m-d H:i:s'),
+                          ]);
             $ret = $model->save();
 
             

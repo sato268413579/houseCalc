@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'HouseController@view');
+Route::get('/', 'TodayController@view');
+Route::post('/todayRegister', 'TodayController@todayRegister');
+Route::get('/tomonth', 'HouseController@view');
 Route::get('/dataCheck', 'HouseController@dataCheck');
 Route::post('/register', 'HouseController@register');

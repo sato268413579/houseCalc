@@ -11,7 +11,7 @@
         </header>
         @section('content')
         
-        @if(isset($toMonthData))
+        @if(isset($toMonthData['month']))
             <div>
                 <label>{{date('Y年m月',strtotime($toMonthData['month']))}}の出費<h1>{{$toMonthData['yatin'] + $toMonthData['eat'] + $toMonthData['gasu'] + $toMonthData['denki'] + $toMonthData['suidou'] + $toMonthData['tuushin'] + $toMonthData['loan']}}円</h1></label>
             </div>
@@ -28,27 +28,27 @@
         </div>
         <div class="form-group">
             <label for="text1">食費</label>
-            <input type="text" id="syokuhi" class="form-control" value={{$toMonthData['eat'] ?: 0}}>
+            <input type="text" id="syokuhi" class="form-control" value={{$sumEat ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">ガス代</label>
-            <input type="text" id="gasudai" class="form-control" value={{$toMonthData['gasu'] ?: 0}}>
+            <input type="text" id="gasudai" class="form-control" value={{$toMonthData['gasu'] ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">電気代</label>
-            <input type="text" id="denkidai" class="form-control" value={{$toMonthData['denki'] ?: 0}}>
+            <input type="text" id="denkidai" class="form-control" value={{$toMonthData['denki'] ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">水道代</label>
-            <input type="text" id="suidoudai" class="form-control" value={{$toMonthData['suidou'] ?: 0}}>
+            <input type="text" id="suidoudai" class="form-control" value={{$toMonthData['suidou'] ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">通信費</label>
-            <input type="text" id="tuusinhi" class="form-control" value={{$toMonthData['tuushin'] ?: 0}}>
+            <input type="text" id="tuusinhi" class="form-control" value={{$toMonthData['tuushin'] ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">ローン</label>
-            <input type="text" id="loan" class="form-control" value={{$toMonthData['loan'] ?: 0}}>
+            <input type="text" id="loan" class="form-control" value={{$toMonthData['loan'] ?? 0}}>
         </div>
         <div class="form-group">
             <label for="text1">備考</label>
@@ -60,7 +60,6 @@
         <div class="btn-toolbar">
             <div class="btn-group">
                 <button class="btn btn-light" onclick="calc()">計算</button>
-                <button class="btn btn-light">仮登録</button>
             </div>
             <div class="btn-group ml-auto">
                 <button class="btn btn-success text-right" onclick="register()">確定</button>
@@ -107,11 +106,11 @@
                                        location.reload();
                                    } 
                                 },
-                                error:function(jqXHR, textStatus, errorThrown){console.log(jqXHR); console.log(textStatus); console.log(errorThrown);}
+                                error:function(jqXHR, textStatus, errorThrown){alert('データ登録に失敗しました');　console.log(jqXHR); console.log(textStatus); console.log(errorThrown);}
                             })
                         }
                     },
-                    error:function(jqXHR, textStatus, errorThrown){console.log(jqXHR); console.log(textStatus); console.log(errorThrown);}
+                    error:function(jqXHR, textStatus, errorThrown){alert('データチェックに失敗しました');　console.log(jqXHR); console.log(textStatus); console.log(errorThrown);}
                 })
             }
         </script>

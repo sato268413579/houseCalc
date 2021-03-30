@@ -13,9 +13,10 @@ class CreateEatHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('eat_histories', function (Blueprint $table) {
+        Schema::create('eathistory', function (Blueprint $table) {
             $table->string('month');
             $table->string('day');
+            $table->integer('oiban');
             $table->integer('pay');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
@@ -29,6 +30,6 @@ class CreateEatHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eat_histories');
+        Schema::dropIfExists('eathistory');
     }
 }
