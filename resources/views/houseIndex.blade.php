@@ -68,6 +68,7 @@
         
         <script>
             function register(){
+                var today = new Date();
                 $.ajax({
                     headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     url:'/dataCheck',
@@ -89,7 +90,7 @@
                                 dataType:'JSON',
                                 type:'POST',
                                 data:JSON.stringify({
-                                    'month':'2021-03',
+                                    'month':today.getFullYear() + '/' + (today.getMonth() + 1),
                                     // 'syunyu':document.getElementById('syunyu').value,
                                     'yatin':document.getElementById('yatin').value,
                                     'syokuhi':document.getElementById('syokuhi').value,

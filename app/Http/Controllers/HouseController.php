@@ -60,6 +60,7 @@ class HouseController extends Controller
         
         $model = new MonthHouseCalc();
         $toMonthData = $model->getToMonthData();
+        dd($postData);
         //更新
         if($toMonthData){
             $toMonthData['month'] = $postData['month'];
@@ -74,15 +75,15 @@ class HouseController extends Controller
             $ret = $model->register($toMonthData);
         //追加
         }else{
-            $model->month = $postData['month'];
-            $model->yatin = $postData['yatin'];
-            $model->eat = $postData['syokuhi'];
-            $model->gasu = $postData['gasudai'];
-            $model->denki = $postData['denkidai'];
-            $model->suidou = $postData['suidoudai'];
-            $model->tuushin = $postData['tuusinhi'];
-            $model->loan = $postData['loandai'];
-            $model->comment = $postData['comment'];
+            $model['month'] = $postData['month'];
+            $model['yatin'] = $postData['yatin'];
+            $model['eat'] = $postData['syokuhi'];
+            $model['gasu'] = $postData['gasudai'];
+            $model['denki'] = $postData['denkidai'];
+            $model['suidou'] = $postData['suidoudai'];
+            $model['tuushin'] = $postData['tuusinhi'];
+            $model['loan'] = $postData['loandai'];
+            $model['comment'] = $postData['comment'];
             $ret = $model->register($model);
         }
 
