@@ -60,7 +60,6 @@ class HouseController extends Controller
         
         $model = new MonthHouseCalc();
         $toMonthData = $model->getToMonthData();
-        dd($postData);
         //更新
         if($toMonthData){
             $toMonthData['month'] = $postData['month'];
