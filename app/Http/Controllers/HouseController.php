@@ -17,7 +17,7 @@ class HouseController extends Controller
         $month = new MonthHouseCalc();
         $toMonthData = $month->getToMonthData() ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
-
+        
         $syunyuModel = new syunyuMaster();
         $syunyu = $syunyuModel->getSyunyu();
 
