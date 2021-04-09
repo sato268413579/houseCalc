@@ -52,7 +52,7 @@
         </div>
         <div class="form-group">
             <label for="text1">備考</label>
-            <textarea id="comment" class="form-control"></textarea>
+            <textarea id="comment" class="form-control">{{$toMonthData['comment'] ?? ''}}</textarea>
         </div>
         <div class="form-group">
             <label id="result"></label>
