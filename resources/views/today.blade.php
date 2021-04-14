@@ -16,8 +16,9 @@
                 @for($i = 1; $i <= date('t'); $i++)
                     @if(date('d') == $i)
                         <option selected="selected">{{date('Y/').date('m/').$i}}</option>
+                    @else
+                        <option>{{date('Y/').date('m/').$i}}</option>
                     @endif
-                    <option>{{date('Y/').date('m/').$i}}</option>
                 @endfor
             </select>
         </div>
