@@ -22,3 +22,5 @@ Route::post('/todayRegister', 'TodayController@todayRegister');
 Route::get('/tomonth', 'HouseController@view');
 Route::get('/dataCheck', 'HouseController@dataCheck');
 Route::post('/register', 'HouseController@register');
+Route::get('/beforeMonth', 'BeforeMonthController@view');
+Route::post('/getBeforeData', 'BeforeMonthController@getBeforeData');

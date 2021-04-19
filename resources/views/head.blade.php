@@ -9,4 +9,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/calc.js') }}"></script>
+    <script src="{{ asset('js/beforeMonthShow.js') }}"></script>
+    <script src="{{ asset('js/monthRegister.js') }}"></script>
+    <script src="{{ asset('js/todayRegister.js') }}"></script>
 @endsection

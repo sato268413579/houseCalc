@@ -72,4 +72,13 @@ class MonthHouseCalc extends Model
         DB::commit();
         return $ret;
     }
+
+    /**
+     * 指定した年月データを取得
+     */
+    public function getDataMonth($month){
+        if($month == '' || is_null($month)){$month = date('Y/m');}
+        // return $this::whereBetWeen(DB::raw('CAST(CONCAT(month, \'/1\') AS DATE)'), [$month.'/1/1', $month.'/12/1'])->get()->toArray();
+        return $this::where('month', '=', $month)->first();
+    }
 }
