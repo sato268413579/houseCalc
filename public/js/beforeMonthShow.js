@@ -60,6 +60,12 @@ function btnCreateShow() {
                 row.insertCell().appendChild(document.createTextNode('備考'));
                 row.insertCell().appendChild(document.createTextNode(data['data']['comment']));
 
+                sum = data['data']['yatin'] + data['data']['eat'] + data['data']['gasu'] + data['data']['denki'] + data['data']['suidou'] + data['data']['tuushin'] + data['data']['loan'];
+
+                row = table.insertRow();
+                row.insertCell().appendChild(document.createTextNode('合計'));
+                row.insertCell().appendChild(document.createTextNode(sum));
+
                 document.getElementById('tableShowData').appendChild(table);
             }
 
