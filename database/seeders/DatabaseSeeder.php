@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MonthHouseCalcSeeder::class);
         $this->call(SyunyuMasterSeeder::class);
         $this->call(EatHistorySeeder::class);
+        $this->call(InfoModelSeeder::class);
     }
 }

@@ -24,3 +24,5 @@ Route::get('/dataCheck', 'HouseController@dataCheck');
 Route::post('/register', 'HouseController@register');
 Route::get('/beforeMonth', 'BeforeMonthController@view');
 Route::post('/getBeforeData', 'BeforeMonthController@getBeforeData');
+Route::get('/info', 'InfoController@view');
+Route::post('/infoRegister', 'InfoController@register');

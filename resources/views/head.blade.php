@@ -12,4 +12,5 @@
     <script src="{{ asset('js/beforeMonthShow.js') }}"></script>
     <script src="{{ asset('js/monthRegister.js') }}"></script>
     <script src="{{ asset('js/todayRegister.js') }}"></script>
+    <script src="{{ asset('js/infoRegister.js') }}"></script>
 @endsection
