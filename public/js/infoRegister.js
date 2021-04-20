@@ -13,7 +13,8 @@ function infoRegister(){
                 'detail': document.getElementById('infoDetail').value,
             }),
             success:function(data){
-                alert(JSON.stringify(data));
+                alert('送信完了しました。');
+                location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) { alert('データ登録に失敗しました'); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
         });
