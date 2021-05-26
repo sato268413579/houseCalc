@@ -15,12 +15,13 @@ class EatHistory extends Model
     //fill()を使用する場合はfillableかguardedどちらかを指定しなければいけない
     //fillable = ホワイトリスト的に
     //guarded = ブラックリスト的に
-    protected $fillable = ['month', 'day', 'oiban', 'pay'];
+    protected $fillable = ['month', 'day', 'oiban', 'pay', 'type'];
 
     public string $month = '';
     public string $day = '';
     public string $oiban = '';
     public int $pay = 0;
+    public int $type = 0;
 
     public function getToMonthSumPay($month){
         return $this::where('month', '=', $month)->sum('pay');
@@ -46,6 +47,7 @@ class EatHistory extends Model
                           'day' => $model['day'],
                           'oiban' => $model['oiban'],
                           'pay' => $model['pay'],
+                          'type' => $model['type'],
                           'created_at' => date('Y-m-d H:i:s'),
                           'updated_at' => date('Y-m-d H:i:s'),
                           ]);
@@ -59,5 +61,17 @@ class EatHistory extends Model
 
         DB::commit();
         return $ret;
+    }
+
+    /**
+     * 指定月の日毎データを取得
+     */
+    public function getDayData($month){
+        $dataCheck = $this::where('month', '=', $month)->orderBy('day', 'asc')->get()->toArray();
+        if(empty($dataCheck)){
+            return null;
+        }
+
+        return $dataCheck;
     }
 }

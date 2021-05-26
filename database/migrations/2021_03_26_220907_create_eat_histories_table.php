@@ -18,6 +18,7 @@ class CreateEatHistoriesTable extends Migration
             $table->string('day');
             $table->integer('oiban');
             $table->integer('pay');
+            $table->integer('type');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
