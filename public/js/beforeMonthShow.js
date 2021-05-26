@@ -114,7 +114,25 @@ function btnCreateShow() {
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) { alert('データチェックに失敗' + '\r\njpXHR：' + jqXHR + '\r\ntextStatus：' + textStatus + '\r\nerrorThrown：' + errorThrown); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
+        error: function (jqXHR, textStatus, errorThrown) { 
+            alert('データチェックに失敗');
+
+            const table = document.createElement('table');
+
+            table.id = 'tblMonth';
+            table.className = 'table';
+
+            row = table.insertRow();
+            row.insertCell().appendChild(document.createTextNode('jpXHR：' + jqXHR));
+            row.insertCell().appendChild(document.createTextNode('textStatus：' + textStatus));
+            row.insertCell().appendChild(document.createTextNode('errorThrown：' + errorThrown));
+
+            document.getElementById('tableShowData').appendChild(table);
+
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown); 
+        }
     });
 }
 
