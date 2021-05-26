@@ -114,7 +114,7 @@ function btnCreateShow() {
             }
 
         },
-        error: function (jqXHR, textStatus, errorThrown) { alert('データチェックに失敗しました' + '\r\njpXHR：' + console.log(jqXHR) + '\r\ntextStatus：' + console.log(textStatus) + '\r\nerrorThrown：' + console.log(errorThrown)); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
+        error: function (jqXHR, textStatus, errorThrown) { alert('データチェックに失敗' + '\r\njpXHR：' + console.log(jqXHR) + '\r\ntextStatus：' + console.log(textStatus) + '\r\nerrorThrown：' + console.log(errorThrown)); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
     });
 }
 
