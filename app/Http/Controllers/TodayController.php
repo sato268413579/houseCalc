@@ -21,7 +21,8 @@ class TodayController extends Controller
         $eatHistory['day'] = $postData['today'];
         $eatHistory['oiban'] = $maxOiban + 1 ?? 1;
         $eatHistory['pay'] = $postData['pay'];
-        $eatHistory['type'] = $postData['type'];
+        $eatHistory['type'] = 
+        $postData['type'];
         $ret = $eatHistory->register($eatHistory);
 
         return response()->json([

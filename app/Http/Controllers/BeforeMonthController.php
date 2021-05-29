@@ -15,7 +15,6 @@ class BeforeMonthController extends Controller
     public function getBeforeData(Request $request){
         $postData = json_decode($request->getcontent(), true);
 
-        dd($postData);
         switch ($postData['type']) {
             case 'registerDay':
                 $model = new EatHistory();
