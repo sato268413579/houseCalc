@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MonthHouseCalc;
 use App\Models\EatHistory;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class BeforeMonthController extends Controller
 {
@@ -22,6 +24,26 @@ class BeforeMonthController extends Controller
                 $month = str_replace('/', '-', $postData['toMonth']);
 
                 $data = $model->getDayData($month);
+
+                $files = str_replace('public/' . $month . '/', '', Storage::files('public/' . $month));
+                
+                for($i = 0; $i < count($data); $i++){
+                    $data[$i]['day'] = str_replace('/', '-', $data[$i]['day']);
+                    
+                    //ファイル名の日付形式が合わないため日付形式を合わせる (例：2021-08-3 → 2021-08-03)
+                    $data[$i]['day'] = date('Y-m-d', strtotime($data[$i]['day']));
+
+                    //ファイル数分チェック
+                    for($j = 0; $j < count($files); $j++){
+
+                        $nonExtension = substr($files[$j], 0, strcspn($files[$j], '_'));
+                        
+                        if($nonExtension === $data[$i]['day']){
+                            $monthFolder = date('Y-m', strtotime($nonExtension));
+                            $data[$i]['image'] = $monthFolder . '/' . $files[$j];
+                        }
+                    }
+                }
                 break;
             case 'sum':
                 $model = new MonthHouseCalc();

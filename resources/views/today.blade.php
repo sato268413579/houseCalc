@@ -5,8 +5,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('head')
     </head>
-    <body>
-        @section('content')
+    
+    @section('content')
+        <body>
         <header>
             @include('header')
         </header>
@@ -39,9 +40,15 @@
             <input type="text" id="pay" name="pay" class="form-control" value="0">
             <label id="payError" style="color:red;"></label>
         </div>
+        <div class="form-gtoup">
+            <div class="custom-file">
+                <input type="file" id="image" class="form-control-file" name="image" accept="image/png, image/jpeg">
+            </div>
+        </div>
         <div class="btn-group ml-auto">
             <button class="btn btn-success text-right" onclick="todayRegister()">登録</button>
         </div>
     </body>
+
     @endsection
 </html>

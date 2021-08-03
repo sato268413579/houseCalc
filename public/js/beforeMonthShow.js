@@ -55,11 +55,20 @@ function btnCreateShow() {
                                 row.insertCell().appendChild(document.createTextNode('金額'));
                                 row.insertCell().appendChild(document.createTextNode(data['data'][i]['pay']));
                             }
+
+                            if (data['data'][i]['image']){
+                                row.insertCell().appendChild(document.createTextNode(data['data'][i]['day']));
+                                row.insertCell().appendChild(document.createTextNode('画像'));
+
+                                var img = document.createElement('img');
+                                img.src = 'storage/' + data['data'][i]['image'];
+                                img.width = 150;
+                                row.insertCell().appendChild(img);
+                            }
                             
                             oldDay = data['data'][i]['day'];
                         }
 
-                        
                         
                         document.getElementById('tableShowData').appendChild(table);
                         break;

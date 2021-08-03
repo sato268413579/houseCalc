@@ -32,7 +32,9 @@
             </div>
             <div id="errMsg"></div>
             <div id="tableShowData"></div>
-
         @endsection
+        <div id="app">
+            <example-component></example-component>
+        </div>
     </body>
 </html>

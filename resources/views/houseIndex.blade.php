@@ -17,6 +17,15 @@
             </div>
         @endif
         
+        <select onchange="getMonthData()" name="toMonth" id="toMonth" class="form-control w-25">
+            @for($i = 1; $i < 13;$i++)
+                @if(date('m') == $i)
+                    <option selected="selected">{{date('Y/m', strtotime(date('Y/').$i.'/1'))}}
+                @else
+                    <option>{{date('Y/m', strtotime(date('Y/').$i.'/1'))}}
+                @endif
+            @endfor
+        </select>
         
         {{-- <div class="form-group">
             <label for="text1">収入</label>

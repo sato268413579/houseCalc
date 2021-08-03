@@ -14,5 +14,6 @@
     <footer>
         <!-- 省略 -->
     </footer>
+    <script src="js/app.js"></script>
 </body>
 </html>

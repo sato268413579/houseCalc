@@ -12,10 +12,11 @@ class HouseController extends Controller
     /**
      * 初期表示
      */
-    public function view(){
+    public function view(Request $request){
+        $postData = json_decode($request->getContent(), true);
 
         $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData() ?? new MonthHouseCalc();
+        $toMonthData = $month->getToMonthData($postData['toMonth'] ?? today()) ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
         
         $syunyuModel = new syunyuMaster();
@@ -30,9 +31,11 @@ class HouseController extends Controller
     /**
      * 既存データチェック
      */
-    public function dataCheck(){
+    public function dataCheck(Request $request){
+        $postData = json_decode($request->getContent(), true);
+
         $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData() ?? new MonthHouseCalc();
+        $toMonthData = $month->getToMonthData($postData['toMonth'] ?? today()) ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
         $result = 0;
 
@@ -59,7 +62,7 @@ class HouseController extends Controller
         $postData = json_decode($request->getcontent(), true);
         
         $model = new MonthHouseCalc();
-        $toMonthData = $model->getToMonthData();
+        $toMonthData = $model->getToMonthData($postData['month']);
         //更新
         if($toMonthData){
             $toMonthData['month'] = $postData['month'];
@@ -88,6 +91,28 @@ class HouseController extends Controller
 
         return response()->json([
             'result' => $ret
+        ]);
+    }
+    
+    /**
+     * 初期表示
+     */
+    public function getAjaxData(Request $request){
+        $postData = json_decode($request->getContent(), true);
+
+        $month = new MonthHouseCalc();
+        $toMonthData = $month->getToMonthData($postData['toMonth'] ?? today()) ?? new MonthHouseCalc();
+        $toMonthData = $toMonthData->toArray();
+
+        $syunyuModel = new syunyuMaster();
+        $syunyu = $syunyuModel->getSyunyu();
+
+        $toMonthEat = new EatHistory();
+        $sumEat = $toMonthEat->getToMonthSumPay(date('Y-m', strtotime($postData['toMonth'] . '/01')) ?? date('Y-m'));
+
+        return response()->json([
+            'data' => $toMonthData,
+            'eat' => $sumEat
         ]);
     }
 }

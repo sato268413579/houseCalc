@@ -36,8 +36,8 @@ class MonthHouseCalc extends Model
     /**
      * 当月のデータ取得
      */
-    public function getToMonthData(){
-        return $this::where('month', '=',date('Y/m'))->first();
+    public function getToMonthData($toMonht){
+        return $this::where('month', '=',$toMonht)->first();
     }
 
     /**
