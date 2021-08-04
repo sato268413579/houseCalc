@@ -1,4 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=4237dcad5e5cd46ea095",
+    "/js/calc.js": "/js/calc.js?id=9b743ede83e75f48eb6d",
+    "/js/beforeMonthShow.js": "/js/beforeMonthShow.js?id=eba6b7b2cd4a84bddd2c",
+    "/js/infoRegister.js": "/js/infoRegister.js?id=dbf72c93c993dc393c86",
+    "/js/monthRegister.js": "/js/monthRegister.js?id=072229af3214c87632fb",
+    "/js/navActive.js": "/js/navActive.js?id=8a10531226022916e925",
+    "/js/todayRegister.js": "/js/todayRegister.js?id=ae5329f293ce026fd9f8",
+    "/css/app.css": "/css/app.css?id=a86101e4175555bfc46c"
 }

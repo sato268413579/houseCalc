@@ -7,7 +7,6 @@
     </head>
     
     @section('content')
-        <body>
         <header>
             @include('header')
         </header>
@@ -48,7 +47,6 @@
         <div class="btn-group ml-auto">
             <button class="btn btn-success text-right" onclick="todayRegister()">登録</button>
         </div>
-    </body>
 
     @endsection
 </html>

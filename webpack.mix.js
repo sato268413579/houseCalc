@@ -12,5 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/calc.js', 'public/js/')
+    .js('resources/js/beforeMonthShow.js', 'public/js')
+    .js('resources/js/infoRegister.js', 'public/js')
+    .js('resources/js/monthRegister.js', 'public/js')
+    .js('resources/js/navActive.js', 'public/js')
+    .js('resources/js/todayRegister.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
+mix.version();

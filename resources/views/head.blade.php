@@ -8,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/calc.js') }}"></script>
-    <script src="{{ asset('js/beforeMonthShow.js') }}"></script>
-    <script src="{{ asset('js/monthRegister.js') }}"></script>
-    <script src="{{ asset('js/todayRegister.js') }}"></script>
-    <script src="{{ asset('js/infoRegister.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/calc.js') }}"></script>
+    <script src="{{ mix('js/beforeMonthShow.js') }}"></script>
+    <script src="{{ mix('js/monthRegister.js') }}"></script>
+    <script src="{{ mix('js/todayRegister.js') }}"></script>
+    <script src="{{ mix('js/infoRegister.js') }}"></script>
+    <script src="{{ mix('js/navActive.js') }}"></script>
 @endsection

@@ -1,40 +1,32 @@
-function todayRegister() {
-    if (document.getElementById('pay').value == '' || document.getElementById('pay').value == '0' || isNaN(document.getElementById('pay').value) || (!document.getElementById('eat').checked && !document.getElementById('other').checked)) {
-        document.getElementById('payError').innerText = '金額が未入力、0または種別を選択しておりません。再度入力をお願いします。';
-        return;
-    }
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-    var type = document.getElementById('eat').checked ? '1' : '2';
-    var reader = new FileReader();
+/***/ "./resources/js/todayRegister.js":
+/*!***************************************!*\
+  !*** ./resources/js/todayRegister.js ***!
+  \***************************************/
+/***/ (() => {
 
-    reader.onloadend = function func(event){
-        var formData = new FormData();
-        formData.append('today', document.getElementById('today').value);
-        formData.append('pay', document.getElementById('pay').value);
-        formData.append('type', type);
-        formData.append('image', document.getElementById('image').files[0]);
-        
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            url: '/todayRegister',
-            // dataType: 'JSON',
-            type: 'POST',
-            processData: false, // jQueryがデータを処理しないよう指定
-            contentType: false,  // jQueryがcontentTypeを設定しないよう指定
-            // data: JSON.stringify({
-            //     'today': document.getElementById('today').value,
-            //     'pay': document.getElementById('pay').value,
-            //     'type': type,
-            //     'image': uaJoin,
-            // }),
-            data: formData,
-            success: function (data) {
-                alert('データ登録に成功しました！');
-                location.reload();
-            },
-            error: function (jqXHR, textStatus, errorThrown) { alert('データ登録に失敗しました'); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
-        });
-    }
+eval("window.todayRegister = function () {\n  if (document.getElementById('pay').value == '' || document.getElementById('pay').value == '0' || isNaN(document.getElementById('pay').value) || !document.getElementById('eat').checked && !document.getElementById('other').checked) {\n    document.getElementById('payError').innerText = '金額が未入力、0または種別を選択しておりません。再度入力をお願いします。';\n    return;\n  }\n\n  var type = document.getElementById('eat').checked ? '1' : '2';\n  var reader = new FileReader();\n\n  reader.onloadend = function func(event) {\n    var formData = new FormData();\n    formData.append('today', document.getElementById('today').value);\n    formData.append('pay', document.getElementById('pay').value);\n    formData.append('type', type);\n    formData.append('image', document.getElementById('image').files[0]);\n    $.ajax({\n      headers: {\n        'X-CSRF-TOKEN': $('meta[name=\"csrf-token\"]').attr('content')\n      },\n      url: '/todayRegister',\n      // dataType: 'JSON',\n      type: 'POST',\n      processData: false,\n      // jQueryがデータを処理しないよう指定\n      contentType: false,\n      // jQueryがcontentTypeを設定しないよう指定\n      // data: JSON.stringify({\n      //     'today': document.getElementById('today').value,\n      //     'pay': document.getElementById('pay').value,\n      //     'type': type,\n      //     'image': uaJoin,\n      // }),\n      data: formData,\n      success: function success(data) {\n        alert('データ登録に成功しました！');\n        location.reload();\n      },\n      error: function error(jqXHR, textStatus, errorThrown) {\n        alert('データ登録に失敗しました');\n        console.log(jqXHR);\n        console.log(textStatus);\n        console.log(errorThrown);\n      }\n    });\n  };\n\n  reader.readAsArrayBuffer(document.getElementById('image').files[0]);\n};//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9teS13ZWJwYWNrLXByb2plY3QvLi9yZXNvdXJjZXMvanMvdG9kYXlSZWdpc3Rlci5qcz9hZWNlIl0sIm5hbWVzIjpbIndpbmRvdyIsInRvZGF5UmVnaXN0ZXIiLCJkb2N1bWVudCIsImdldEVsZW1lbnRCeUlkIiwidmFsdWUiLCJpc05hTiIsImNoZWNrZWQiLCJpbm5lclRleHQiLCJ0eXBlIiwicmVhZGVyIiwiRmlsZVJlYWRlciIsIm9ubG9hZGVuZCIsImZ1bmMiLCJldmVudCIsImZvcm1EYXRhIiwiRm9ybURhdGEiLCJhcHBlbmQiLCJmaWxlcyIsIiQiLCJhamF4IiwiaGVhZGVycyIsImF0dHIiLCJ1cmwiLCJwcm9jZXNzRGF0YSIsImNvbnRlbnRUeXBlIiwiZGF0YSIsInN1Y2Nlc3MiLCJhbGVydCIsImxvY2F0aW9uIiwicmVsb2FkIiwiZXJyb3IiLCJqcVhIUiIsInRleHRTdGF0dXMiLCJlcnJvclRocm93biIsImNvbnNvbGUiLCJsb2ciLCJyZWFkQXNBcnJheUJ1ZmZlciJdLCJtYXBwaW5ncyI6IkFBQUFBLE1BQU0sQ0FBQ0MsYUFBUCxHQUF1QixZQUFXO0FBQzlCLE1BQUlDLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixLQUF4QixFQUErQkMsS0FBL0IsSUFBd0MsRUFBeEMsSUFBOENGLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixLQUF4QixFQUErQkMsS0FBL0IsSUFBd0MsR0FBdEYsSUFBNkZDLEtBQUssQ0FBQ0gsUUFBUSxDQUFDQyxjQUFULENBQXdCLEtBQXhCLEVBQStCQyxLQUFoQyxDQUFsRyxJQUE2SSxDQUFDRixRQUFRLENBQUNDLGNBQVQsQ0FBd0IsS0FBeEIsRUFBK0JHLE9BQWhDLElBQTJDLENBQUNKLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixPQUF4QixFQUFpQ0csT0FBOU4sRUFBd087QUFDcE9KLElBQUFBLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixVQUF4QixFQUFvQ0ksU0FBcEMsR0FBZ0Qsc0NBQWhEO0FBQ0E7QUFDSDs7QUFFRCxNQUFJQyxJQUFJLEdBQUdOLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixLQUF4QixFQUErQkcsT0FBL0IsR0FBeUMsR0FBekMsR0FBK0MsR0FBMUQ7QUFDQSxNQUFJRyxNQUFNLEdBQUcsSUFBSUMsVUFBSixFQUFiOztBQUVBRCxFQUFBQSxNQUFNLENBQUNFLFNBQVAsR0FBbUIsU0FBU0MsSUFBVCxDQUFjQyxLQUFkLEVBQW9CO0FBQ25DLFFBQUlDLFFBQVEsR0FBRyxJQUFJQyxRQUFKLEVBQWY7QUFDQUQsSUFBQUEsUUFBUSxDQUFDRSxNQUFULENBQWdCLE9BQWhCLEVBQXlCZCxRQUFRLENBQUNDLGNBQVQsQ0FBd0IsT0FBeEIsRUFBaUNDLEtBQTFEO0FBQ0FVLElBQUFBLFFBQVEsQ0FBQ0UsTUFBVCxDQUFnQixLQUFoQixFQUF1QmQsUUFBUSxDQUFDQyxjQUFULENBQXdCLEtBQXhCLEVBQStCQyxLQUF0RDtBQUNBVSxJQUFBQSxRQUFRLENBQUNFLE1BQVQsQ0FBZ0IsTUFBaEIsRUFBd0JSLElBQXhCO0FBQ0FNLElBQUFBLFFBQVEsQ0FBQ0UsTUFBVCxDQUFnQixPQUFoQixFQUF5QmQsUUFBUSxDQUFDQyxjQUFULENBQXdCLE9BQXhCLEVBQWlDYyxLQUFqQyxDQUF1QyxDQUF2QyxDQUF6QjtBQUVBQyxJQUFBQSxDQUFDLENBQUNDLElBQUYsQ0FBTztBQUNIQyxNQUFBQSxPQUFPLEVBQUU7QUFBRSx3QkFBZ0JGLENBQUMsQ0FBQyx5QkFBRCxDQUFELENBQTZCRyxJQUE3QixDQUFrQyxTQUFsQztBQUFsQixPQUROO0FBRUhDLE1BQUFBLEdBQUcsRUFBRSxnQkFGRjtBQUdIO0FBQ0FkLE1BQUFBLElBQUksRUFBRSxNQUpIO0FBS0hlLE1BQUFBLFdBQVcsRUFBRSxLQUxWO0FBS2lCO0FBQ3BCQyxNQUFBQSxXQUFXLEVBQUUsS0FOVjtBQU1rQjtBQUNyQjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQUMsTUFBQUEsSUFBSSxFQUFFWCxRQWJIO0FBY0hZLE1BQUFBLE9BQU8sRUFBRSxpQkFBVUQsSUFBVixFQUFnQjtBQUNyQkUsUUFBQUEsS0FBSyxDQUFDLGVBQUQsQ0FBTDtBQUNBQyxRQUFBQSxRQUFRLENBQUNDLE1BQVQ7QUFDSCxPQWpCRTtBQWtCSEMsTUFBQUEsS0FBSyxFQUFFLGVBQVVDLEtBQVYsRUFBaUJDLFVBQWpCLEVBQTZCQyxXQUE3QixFQUEwQztBQUFFTixRQUFBQSxLQUFLLENBQUMsY0FBRCxDQUFMO0FBQXVCTyxRQUFBQSxPQUFPLENBQUNDLEdBQVIsQ0FBWUosS0FBWjtBQUFvQkcsUUFBQUEsT0FBTyxDQUFDQyxHQUFSLENBQVlILFVBQVo7QUFBeUJFLFFBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZRixXQUFaO0FBQTJCO0FBbEIvSSxLQUFQO0FBb0JILEdBM0JEOztBQTZCQXhCLEVBQUFBLE1BQU0sQ0FBQzJCLGlCQUFQLENBQXlCbEMsUUFBUSxDQUFDQyxjQUFULENBQXdCLE9BQXhCLEVBQWlDYyxLQUFqQyxDQUF1QyxDQUF2QyxDQUF6QjtBQUNILENBdkNEIiwic291cmNlc0NvbnRlbnQiOlsid2luZG93LnRvZGF5UmVnaXN0ZXIgPSBmdW5jdGlvbigpIHtcclxuICAgIGlmIChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGF5JykudmFsdWUgPT0gJycgfHwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BheScpLnZhbHVlID09ICcwJyB8fCBpc05hTihkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGF5JykudmFsdWUpIHx8ICghZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2VhdCcpLmNoZWNrZWQgJiYgIWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdvdGhlcicpLmNoZWNrZWQpKSB7XHJcbiAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BheUVycm9yJykuaW5uZXJUZXh0ID0gJ+mHkemhjeOBjOacquWFpeWKm+OAgTDjgb7jgZ/jga/nqK7liKXjgpLpgbjmip7jgZfjgabjgYrjgorjgb7jgZvjgpPjgILlho3luqblhaXlipvjgpLjgYrpoZjjgYTjgZfjgb7jgZnjgIInO1xyXG4gICAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICB2YXIgdHlwZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlYXQnKS5jaGVja2VkID8gJzEnIDogJzInO1xyXG4gICAgdmFyIHJlYWRlciA9IG5ldyBGaWxlUmVhZGVyKCk7XHJcblxyXG4gICAgcmVhZGVyLm9ubG9hZGVuZCA9IGZ1bmN0aW9uIGZ1bmMoZXZlbnQpe1xyXG4gICAgICAgIHZhciBmb3JtRGF0YSA9IG5ldyBGb3JtRGF0YSgpO1xyXG4gICAgICAgIGZvcm1EYXRhLmFwcGVuZCgndG9kYXknLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndG9kYXknKS52YWx1ZSk7XHJcbiAgICAgICAgZm9ybURhdGEuYXBwZW5kKCdwYXknLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGF5JykudmFsdWUpO1xyXG4gICAgICAgIGZvcm1EYXRhLmFwcGVuZCgndHlwZScsIHR5cGUpO1xyXG4gICAgICAgIGZvcm1EYXRhLmFwcGVuZCgnaW1hZ2UnLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaW1hZ2UnKS5maWxlc1swXSk7XHJcbiAgICAgICAgXHJcbiAgICAgICAgJC5hamF4KHtcclxuICAgICAgICAgICAgaGVhZGVyczogeyAnWC1DU1JGLVRPS0VOJzogJCgnbWV0YVtuYW1lPVwiY3NyZi10b2tlblwiXScpLmF0dHIoJ2NvbnRlbnQnKSB9LFxyXG4gICAgICAgICAgICB1cmw6ICcvdG9kYXlSZWdpc3RlcicsXHJcbiAgICAgICAgICAgIC8vIGRhdGFUeXBlOiAnSlNPTicsXHJcbiAgICAgICAgICAgIHR5cGU6ICdQT1NUJyxcclxuICAgICAgICAgICAgcHJvY2Vzc0RhdGE6IGZhbHNlLCAvLyBqUXVlcnnjgYzjg4fjg7zjgr/jgpLlh6bnkIbjgZfjgarjgYTjgojjgYbmjIflrppcclxuICAgICAgICAgICAgY29udGVudFR5cGU6IGZhbHNlLCAgLy8galF1ZXJ544GMY29udGVudFR5cGXjgpLoqK3lrprjgZfjgarjgYTjgojjgYbmjIflrppcclxuICAgICAgICAgICAgLy8gZGF0YTogSlNPTi5zdHJpbmdpZnkoe1xyXG4gICAgICAgICAgICAvLyAgICAgJ3RvZGF5JzogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RvZGF5JykudmFsdWUsXHJcbiAgICAgICAgICAgIC8vICAgICAncGF5JzogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BheScpLnZhbHVlLFxyXG4gICAgICAgICAgICAvLyAgICAgJ3R5cGUnOiB0eXBlLFxyXG4gICAgICAgICAgICAvLyAgICAgJ2ltYWdlJzogdWFKb2luLFxyXG4gICAgICAgICAgICAvLyB9KSxcclxuICAgICAgICAgICAgZGF0YTogZm9ybURhdGEsXHJcbiAgICAgICAgICAgIHN1Y2Nlc3M6IGZ1bmN0aW9uIChkYXRhKSB7XHJcbiAgICAgICAgICAgICAgICBhbGVydCgn44OH44O844K/55m76Yyy44Gr5oiQ5Yqf44GX44G+44GX44Gf77yBJyk7XHJcbiAgICAgICAgICAgICAgICBsb2NhdGlvbi5yZWxvYWQoKTtcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgZXJyb3I6IGZ1bmN0aW9uIChqcVhIUiwgdGV4dFN0YXR1cywgZXJyb3JUaHJvd24pIHsgYWxlcnQoJ+ODh+ODvOOCv+eZu+mMsuOBq+WkseaVl+OBl+OBvuOBl+OBnycpOyBjb25zb2xlLmxvZyhqcVhIUik7IGNvbnNvbGUubG9nKHRleHRTdGF0dXMpOyBjb25zb2xlLmxvZyhlcnJvclRocm93bik7IH1cclxuICAgICAgICB9KTtcclxuICAgIH1cclxuXHJcbiAgICByZWFkZXIucmVhZEFzQXJyYXlCdWZmZXIoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ltYWdlJykuZmlsZXNbMF0pO1xyXG59Il0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy90b2RheVJlZ2lzdGVyLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/todayRegister.js\n");
 
-    reader.readAsArrayBuffer(document.getElementById('image').files[0]);
-}
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./resources/js/todayRegister.js"]();
+/******/ 	
+/******/ })()
+;
