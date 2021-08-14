@@ -25,7 +25,7 @@ class BeforeMonthController extends Controller
 
                 $data = $model->getDayData($month);
 
-                $files = str_replace('public/' . $month . '/', '', Storage::files('public/' . $month));
+                $files = str_replace('public/' . $month . '/', '', Storage::disk('copy')->files('public/' . $month));
                 
                 for($i = 0; $i < count($data); $i++){
                     $data[$i]['day'] = str_replace('/', '-', $data[$i]['day']);

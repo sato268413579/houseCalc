@@ -50,6 +50,12 @@ class TodayController extends Controller
         //ファイル保存
         $request->image->storeAs('public/' . $eatHistory['month'], $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg');
 
+        if(Storage::disk('local')->exists('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg')){
+            Storage::disk('copy')->put('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg', base_path() . 'img/' . $eatHistory['month']);
+        }
+        // dd(Storage::files('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName)+1) . '.jpeg'));
+        
+
         $ret = $eatHistory->register($eatHistory);
 
         return response()->json([

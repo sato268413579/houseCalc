@@ -57,8 +57,8 @@ window.btnCreateShow = function () {
                             }
 
                             if (data['data'][i]['image']){
-                                row.insertCell().appendChild(document.createTextNode(data['data'][i]['day']));
-                                row.insertCell().appendChild(document.createTextNode('画像'));
+                                // row.insertCell().appendChild(document.createTextNode(data['data'][i]['day']));
+                                // row.insertCell().appendChild(document.createTextNode('画像'));
 
                                 var img = document.createElement('img');
                                 img.src = 'storage/' + data['data'][i]['image'];
