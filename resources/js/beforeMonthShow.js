@@ -61,7 +61,7 @@ window.btnCreateShow = function () {
                                 // row.insertCell().appendChild(document.createTextNode('画像'));
 
                                 var img = document.createElement('img');
-                                img.src = 'storage/' + data['data'][i]['image'];
+                                img.src = '/img/public/' + data['data'][i]['image'];
                                 img.width = 150;
                                 row.insertCell().appendChild(img);
                             }

@@ -10,7 +10,6 @@
             @include('header')
         </header>
         @section('content')
-            
             <div class="form-group">
                 <p class="control-label"><b>種別</b></p>
                 <div class="form-check form-check-inline">

@@ -47,14 +47,18 @@ class TodayController extends Controller
         $todayFolderName = str_replace('/', '-', $request->today);
         $todayFolderName = date('Y-m-d', strtotime($todayFolderName));
 
-        //ファイル保存
-        $request->image->storeAs('public/' . $eatHistory['month'], $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg');
+        //ファイルパス
+        $filePath = 'public/' . $eatHistory['month'];
 
-        if(Storage::disk('local')->exists('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg')){
-            Storage::disk('copy')->put('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg', base_path() . 'img/' . $eatHistory['month']);
+        //ファイル名
+        $fileName = $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg';
+
+        //ファイル保存
+        $request->image->storeAs($filePath, $fileName);
+
+        if(Storage::disk('local')->exists($filePath . '/' . $fileName)){
+            Storage::disk('copy')->put($filePath . '/' . $fileName, Storage::disk('local')->get($filePath . '/' . $fileName));
         }
-        // dd(Storage::files('public/' . $eatHistory['month'] . '/' . $todayFolderName . '_' . strval(count($maxFileName)+1) . '.jpeg'));
-        
 
         $ret = $eatHistory->register($eatHistory);
 

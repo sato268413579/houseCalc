@@ -37,7 +37,7 @@ return [
 
         'copy' => [
             'driver' => 'local',
-            'root' => 'img',
+            'root' => public_path() . '/img',
         ],
 
         'public' => [
