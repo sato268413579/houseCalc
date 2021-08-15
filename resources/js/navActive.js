@@ -1,4 +1,6 @@
-if (location.pathname != '/') {
-    $(".nav-item.active").removeClass("active");
-    $('#' + location.pathname.replace('/', '', location.pathname)).addClass("active");
+window.onload = function() { 
+    if (location.pathname != '/') {
+        $(".nav-item.active").removeClass("active");
+        $('#' + location.pathname.replace('/', '', location.pathname)).addClass("active");
+    }
 }
