@@ -13,10 +13,8 @@ class HouseController extends Controller
      * 初期表示
      */
     public function view(Request $request){
-        $postData = json_decode($request->getContent(), true);
-
         $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData($postData['toMonth'] ?? today()) ?? new MonthHouseCalc();
+        $toMonthData = $month->getToMonthData(date('Y/m')) ?? new MonthHouseCalc();
         $toMonthData = $toMonthData->toArray();
         
         $syunyuModel = new syunyuMaster();
