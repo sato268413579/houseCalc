@@ -71,7 +71,9 @@ class EatHistory extends Model
      * 指定月の日毎データを取得
      */
     public function getDayData($month){
-        $dataCheck = $this::where('month', '=', $month)->orderBy('day', 'asc')->get()->toArray();
+        $dataCheck = $this::where('month', '=', $month);
+        $dataCheck = $dataCheck->orderByRaw('CAST(day AS DATE)');
+        $dataCheck = $dataCheck->get()->toArray();
         if(empty($dataCheck)){
             return null;
         }
