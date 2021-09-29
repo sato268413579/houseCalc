@@ -31,35 +31,39 @@
         <input type="text" id="syunyu" class="form-control" value={{$syunyu->syunyu ?: 0}}>
     </div> --}}
     <div class="form-group">
-        <label for="text1">家賃</label>
+        <label for="yatin">家賃</label>
         <input type="text" id="yatin" class="form-control" value="63000" disabled="disable">
     </div>
     <div class="form-group">
-        <label for="text1">食費</label>
+        <label for="syokuhi">食費</label>
         <input type="text" id="syokuhi" class="form-control" value={{$sumEat ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">ガス代</label>
+        <label for="gasudai">ガス代</label>
         <input type="text" id="gasudai" class="form-control" value={{$toMonthData['gasu'] ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">電気代</label>
+        <label for="denkidai">電気代</label>
         <input type="text" id="denkidai" class="form-control" value={{$toMonthData['denki'] ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">水道代</label>
+        <label for="suidoudai">水道代</label>
         <input type="text" id="suidoudai" class="form-control" value={{$toMonthData['suidou'] ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">通信費</label>
+        <label for="tuusinhi">通信費</label>
         <input type="text" id="tuusinhi" class="form-control" value={{$toMonthData['tuushin'] ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">ローン</label>
+        <label for="loan">ローン</label>
         <input type="text" id="loan" class="form-control" value={{$toMonthData['loan'] ?? 0}}>
     </div>
     <div class="form-group">
-        <label for="text1">備考</label>
+        <label for="otherSum">個人出費</label>
+        <input type="text" id="otherSum" class="form-control" value={{$sumOther ?? 0}}>
+    </div>
+    <div class="form-group">
+        <label for="comment">備考</label>
         <textarea id="comment" class="form-control">{{$toMonthData['comment'] ?? ''}}</textarea>
     </div>
     <div class="form-group">

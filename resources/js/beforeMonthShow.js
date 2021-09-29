@@ -55,11 +55,14 @@ window.btnCreateShow = function () {
                                 row.insertCell().appendChild(document.createTextNode('金額'));
                                 row.insertCell().appendChild(document.createTextNode(data['data'][i]['pay']));
                             }
+                            if (data['data'][i]['type'] === 1) {
+                                row.insertCell().appendChild(document.createTextNode('食費'));
+                            } else {
+                                row.insertCell().appendChild(document.createTextNode('個人出費'));
+                            }
+                            row.insertCell().appendChild(document.createTextNode(data['data'][i]['othercomment']));
 
                             if (data['data'][i]['image']){
-                                // row.insertCell().appendChild(document.createTextNode(data['data'][i]['day']));
-                                // row.insertCell().appendChild(document.createTextNode('画像'));
-
                                 var img = document.createElement('img');
                                 img.src = '/img/public/' + data['data'][i]['image'];
                                 img.width = 150;

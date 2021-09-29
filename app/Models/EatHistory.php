@@ -24,7 +24,11 @@ class EatHistory extends Model
     public int $type = 0;
 
     public function getToMonthSumPay($month){
-        return $this::where('month', '=', $month)->sum('pay');
+        return $this::where('month', '=', $month)->where('type', 1)->sum('pay');
+    }
+
+    public function getToMonthOtherSumPay($month){
+        return $this::where('month', '=', $month)->where('type', 2)->sum('pay');
     }
 
     /**

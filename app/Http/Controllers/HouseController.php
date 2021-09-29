@@ -22,8 +22,9 @@ class HouseController extends Controller
 
         $toMonthEat = new EatHistory();
         $sumEat = $toMonthEat->getToMonthSumPay(date('Y-m'));
+        $sumOther = $toMonthEat->getToMonthOtherSumPay(date('Y-m'));
 
-        return view('houseIndex',compact('toMonthData', 'syunyu', 'sumEat'));
+        return view('houseIndex',compact('toMonthData', 'syunyu', 'sumEat', 'sumOther'));
     }
 
     /**
@@ -71,6 +72,7 @@ class HouseController extends Controller
             $toMonthData['suidou'] = $postData['suidoudai'];
             $toMonthData['tuushin'] = $postData['tuusinhi'];
             $toMonthData['loan'] = $postData['loandai'];
+            $toMonthData['otherSum'] = $postData['otherSum'];
             $toMonthData['comment'] = $postData['comment'];
             $ret = $model->register($toMonthData);
         //追加
@@ -83,6 +85,7 @@ class HouseController extends Controller
             $model['suidou'] = $postData['suidoudai'];
             $model['tuushin'] = $postData['tuusinhi'];
             $model['loan'] = $postData['loandai'];
+            $model['otherSum'] = $postData['otherSum'];
             $model['comment'] = $postData['comment'];
             $ret = $model->register($model);
         }
@@ -107,10 +110,12 @@ class HouseController extends Controller
 
         $toMonthEat = new EatHistory();
         $sumEat = $toMonthEat->getToMonthSumPay(date('Y-m', strtotime($postData['toMonth'] . '/01')) ?? date('Y-m'));
+        $sumOther = $toMonthEat->getToMonthOtherSumPay(date('Y-m', strtotime($postData['toMonth'] . '/01')) ?? date('Y-m'));
 
         return response()->json([
             'data' => $toMonthData,
-            'eat' => $sumEat
+            'eat' => $sumEat,
+            'sumOther' => $sumOther
         ]);
     }
 }

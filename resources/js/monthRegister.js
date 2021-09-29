@@ -34,6 +34,7 @@ window.register = function () {
                         'tuusinhi': document.getElementById('tuusinhi').value,
                         'loandai': document.getElementById('loan').value,
                         'comment': document.getElementById('comment').value,
+                        'otherSum': document.getElementById('otherSum').value,
                     }),
                     success: function (data) {
                         if (data['result']) {
@@ -67,6 +68,7 @@ window.getMonthData = function() {
                 document.getElementById('suidoudai').value = monthData['suidou'];
                 document.getElementById('tuusinhi').value = monthData['tuushin'];
                 document.getElementById('loan').value = monthData['loan'];
+                document.getElementById('otherSum').value = data['sumOther'];
                 document.getElementById('comment').value = monthData['comment'];
             }
             else{
@@ -76,6 +78,7 @@ window.getMonthData = function() {
                 document.getElementById('suidoudai').value = 0;
                 document.getElementById('tuusinhi').value = 0;
                 document.getElementById('loan').value = 0;
+                document.getElementById('otherSum').value = 0;
                 document.getElementById('comment').value = '';
                 alert('データが存在しません');
             }

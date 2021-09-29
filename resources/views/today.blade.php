@@ -39,10 +39,14 @@
             <input type="text" id="pay" name="pay" class="form-control" value="0">
             <label id="payError" style="color:red;"></label>
         </div>
-        <div class="form-gtoup">
+        <div id="fileBtn" class="form-gtoup">
             <div class="custom-file">
                 <input type="file" id="image" class="form-control-file" name="image" accept="image/png, image/jpeg">
             </div>
+        </div>
+        <div id="commentDisp" class="form-gtoup" style="display:none;">
+            <label>備考</label>
+            <textarea id="otherComment" class="form-control">{{$toMonthData['comment'] ?? ''}}</textarea>
         </div>
         <div class="btn-group ml-auto">
             <button class="btn btn-success text-right" onclick="todayRegister()">登録</button>

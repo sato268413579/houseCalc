@@ -38,26 +38,28 @@ class TodayController extends Controller
         $eatHistory['oiban'] = $maxOiban + 1 ?? 1;
         $eatHistory['pay'] = $request->pay;
         $eatHistory['type'] = $request->type;
+        $eatHistory['othercomment'] = $request->otherComment ?? '';
+        if ($request->type === '1') {
+            $files = str_replace('public/' . $eatHistory['month'] . '/', '', Storage::files('public/' . $eatHistory['month']));
+            
+            $maxFileName = preg_grep("!". str_replace('/', '-', $request->today) . "!", $files);
 
-        $files = str_replace('public/' . $eatHistory['month'] . '/', '', Storage::files('public/' . $eatHistory['month']));
-        
-        $maxFileName = preg_grep("!". str_replace('/', '-', $request->today) . "!", $files);
+            //日付形式統一
+            $todayFolderName = str_replace('/', '-', $request->today);
+            $todayFolderName = date('Y-m-d', strtotime($todayFolderName));
 
-        //日付形式統一
-        $todayFolderName = str_replace('/', '-', $request->today);
-        $todayFolderName = date('Y-m-d', strtotime($todayFolderName));
+            //ファイルパス
+            $filePath = 'public/' . $eatHistory['month'];
 
-        //ファイルパス
-        $filePath = 'public/' . $eatHistory['month'];
+            //ファイル名
+            $fileName = $todayFolderName . '_' . $eatHistory['oiban'] . '.jpeg';
 
-        //ファイル名
-        $fileName = $todayFolderName . '_' . strval(count($maxFileName) + 1) . '.jpeg';
+            //ファイル保存
+            $request->image->storeAs($filePath, $fileName);
 
-        //ファイル保存
-        $request->image->storeAs($filePath, $fileName);
-
-        if(Storage::disk('local')->exists($filePath . '/' . $fileName)){
-            Storage::disk('copy')->put($filePath . '/' . $fileName, Storage::disk('local')->get($filePath . '/' . $fileName));
+            if(Storage::disk('local')->exists($filePath . '/' . $fileName)){
+                Storage::disk('copy')->put($filePath . '/' . $fileName, Storage::disk('local')->get($filePath . '/' . $fileName));
+            }
         }
 
         $ret = $eatHistory->register($eatHistory);

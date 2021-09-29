@@ -37,8 +37,8 @@ class BeforeMonthController extends Controller
                     for($j = 0; $j < count($files); $j++){
 
                         $nonExtension = substr($files[$j], 0, strcspn($files[$j], '_'));
-                        
-                        if($nonExtension === $data[$i]['day']){
+                        $day = date('Y-m-d', strtotime($data[$i]['day']));
+                        if($files[$j] == $day . '_' . $data[$i]['oiban'] . '.jpeg'){
                             $monthFolder = date('Y-m', strtotime($nonExtension));
                             $data[$i]['image'] = $monthFolder . '/' . $files[$j];
                         }
@@ -49,7 +49,7 @@ class BeforeMonthController extends Controller
                 $model = new MonthHouseCalc();
                 $data = $model->getDataMonth($postData['toMonth']);
                 break;
-            }
+        }
 
         return response()->json(['data' => $data]);
     }
