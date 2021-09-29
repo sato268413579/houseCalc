@@ -12,7 +12,7 @@
     
     @if(isset($toMonthData['month']))
         <div>
-            <label>{{date('Y年m月',strtotime($toMonthData['month'].'/01'))}}の出費<h1>{{$toMonthData['yatin'] + $toMonthData['eat'] + $toMonthData['gasu'] + $toMonthData['denki'] + $toMonthData['suidou'] + $toMonthData['tuushin'] + $toMonthData['loan']}}円</h1></label>
+            <label>{{date('Y年m月',strtotime($toMonthData['month'].'/01'))}}の出費<h1>{{$toMonthData['yatin'] + $toMonthData['eat'] + $toMonthData['gasu'] + $toMonthData['denki'] + $toMonthData['suidou'] + $toMonthData['tuushin'] + $toMonthData['loan'] + $toMonthData['othersum']}}円</h1></label>
         </div>
     @endif
     
