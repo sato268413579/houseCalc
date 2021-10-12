@@ -49,7 +49,7 @@ window.todayRegister = function() {
                 // }),
                 data: formData,
                 success: function (data) {
-                    alert('データ登録に成功しました！');
+                    alert(document.getElementById('today').value + ' でデータ登録に成功しました！');
                     location.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown) { alert('データ登録に失敗しました'); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
@@ -79,7 +79,7 @@ window.todayRegister = function() {
             // }),
             data: formData,
             success: function (data) {
-                alert('データ登録に成功しました！');
+                alert(document.getElementById('today').value + ' でデータ登録に成功しました！');
                 location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) { alert('データ登録に失敗しました'); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
