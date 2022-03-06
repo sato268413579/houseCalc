@@ -64,8 +64,8 @@ class TodayController extends Controller
 
         $ret = $eatHistory->register($eatHistory);
 
-        return response()->json([
-            'result' => $ret
-        ]);
+        return redirect()
+            ->route('today.index')
+            ->with(['message' => $request->today . ' で正常に登録されました。']);
     }
 }

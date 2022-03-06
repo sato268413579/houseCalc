@@ -16,11 +16,12 @@ class InfoController extends Controller
         $postData = json_decode($request->getContent(), true);
 
         $model = new InfoModel();
-        $model['day'] = $postData['day'];
-        $model['func'] = $postData['func'];
-        $model['detail'] = $postData['detail'];
-        $model->register($model, $postData['detail']);
+        $model['day'] = $request->input('day');
+        $model['func'] = $request->input('func');
+        $model['detail'] = $request->input('detail');
+        $model->registerToMailSend($model, $request->input('detail'));
 
-        return response()->json(['json' => $postData]);
+        return redirect()
+            ->route('info.index');
     }
 }

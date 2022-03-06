@@ -80,4 +80,14 @@ class EatHistory extends Model
 
         return $dataCheck;
     }
+
+    public function dayDelete($month, $day, $oiban)
+    {
+        return DB::table($this->table)->where([
+            'month' => $month,
+            'day' => $day,
+            'oiban' => $oiban,
+        ])
+        ->delete();
+    }
 }

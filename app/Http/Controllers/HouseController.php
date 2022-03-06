@@ -28,75 +28,48 @@ class HouseController extends Controller
     }
 
     /**
-     * 既存データチェック
-     */
-    public function dataCheck(Request $request){
-        $postData = json_decode($request->getContent(), true);
-
-        $month = new MonthHouseCalc();
-        $toMonthData = $month->getToMonthData($postData['toMonth'] ?? today()) ?? new MonthHouseCalc();
-        $toMonthData = $toMonthData->toArray();
-        $result = 0;
-
-        //データが存在する場合
-        if($toMonthData){
-            $result = 1;
-        }
-
-        return response()->json(['result' => $result]);
-    }
-
-    /**
      * データ登録
      */
     public function register(Request $request){
-        
-        // $rules = [
-        //     'admin_code' => ['required', 'integer', 'unique:admin'],
-        //     'role' => ['size:1'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed']
-        // ];
-        // $this->validate($request, $rules);
-        
-        $postData = json_decode($request->getcontent(), true);
-        
         $model = new MonthHouseCalc();
-        $toMonthData = $model->getToMonthData($postData['month']);
+        $toMonthData = $model->getToMonthData($request->input('toMonth'));
         //更新
         if($toMonthData){
-            $toMonthData['month'] = $postData['month'];
-            $toMonthData['yatin'] = $postData['yatin'];
-            $toMonthData['eat'] = $postData['syokuhi'];
-            $toMonthData['gasu'] = $postData['gasudai'];
-            $toMonthData['denki'] = $postData['denkidai'];
-            $toMonthData['suidou'] = $postData['suidoudai'];
-            $toMonthData['tuushin'] = $postData['tuusinhi'];
-            $toMonthData['loan'] = $postData['loandai'];
-            $toMonthData['otherSum'] = $postData['otherSum'];
-            $toMonthData['comment'] = $postData['comment'];
+            $toMonthData['month'] = $request->input('toMonth');
+            $toMonthData['yatin'] = $request->input('yatin', 0) ?? 0;
+            $toMonthData['eat'] = $request->input('syokuhi', 0) ?? 0;
+            $toMonthData['gasu'] = $request->input('gasudai', 0) ?? 0;
+            $toMonthData['denki'] = $request->input('denkidai', 0) ?? 0;
+            $toMonthData['suidou'] = $request->input('suidoudai', 0) ?? 0;
+            $toMonthData['tuushin'] = $request->input('tuusinhi', 0) ?? 0;
+            $toMonthData['loan'] = $request->input('loandai', 0) ?? 0;
+            $toMonthData['otherSum'] = $request->input('otherSum', 0) ?? 0;
+            $toMonthData['comment'] = $request->input('comment', '') ?? '';
             $ret = $model->register($toMonthData);
+            $message = '更新が完了しました。';
         //追加
         }else{
-            $model['month'] = $postData['month'];
-            $model['yatin'] = $postData['yatin'];
-            $model['eat'] = $postData['syokuhi'];
-            $model['gasu'] = $postData['gasudai'];
-            $model['denki'] = $postData['denkidai'];
-            $model['suidou'] = $postData['suidoudai'];
-            $model['tuushin'] = $postData['tuusinhi'];
-            $model['loan'] = $postData['loandai'];
-            $model['otherSum'] = $postData['otherSum'];
-            $model['comment'] = $postData['comment'];
+            $model['month'] = $request->input('toMonth');
+            $model['yatin'] = $request->input('yatin', 0) ?? 0;
+            $model['eat'] = $request->input('syokuhi', 0) ?? 0;
+            $model['gasu'] = $request->input('gasudai', 0) ?? 0;
+            $model['denki'] = $request->input('denkidai', 0) ?? 0;
+            $model['suidou'] = $request->input('suidoudai', 0) ?? 0;
+            $model['tuushin'] = $request->input('tuusinhi', 0) ?? 0;
+            $model['loan'] = $request->input('loandai', 0) ?? 0;
+            $model['otherSum'] = $request->input('otherSum', 0) ?? 0;
+            $model['comment'] = $request->input('comment', '') ?? '';
             $ret = $model->register($model);
+            $message = '登録が完了しました。';
         }
 
-        return response()->json([
-            'result' => $ret
-        ]);
+        return redirect()
+            ->route('house.index')
+            ->with(['message' => $message]);
     }
     
     /**
-     * 初期表示
+     * プルダウンで選択した月間データを取得・表示
      */
     public function getAjaxData(Request $request){
         $postData = json_decode($request->getContent(), true);

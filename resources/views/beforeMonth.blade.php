@@ -10,6 +10,7 @@
             @include('header')
         </header>
         @section('content')
+            <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
             <div class="form-group">
                 <p class="control-label"><b>種別</b></p>
                 <div class="form-check form-check-inline">

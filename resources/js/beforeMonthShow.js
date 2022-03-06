@@ -45,8 +45,9 @@ window.btnCreateShow = function () {
 
                         for(i = 0; i < data['data'].length; i++){
                             row = table.insertRow();
+                            row.id = 'registerdRowId' + i;
                             if (oldDay == data['data'][i]['day']){
-                                row.insertCell().appendChild(document.createTextNode(''));
+                                row.insertCell().appendChild(document.createTextNode('')).id = 'aaaaaaa' + i;
                                 row.insertCell().appendChild(document.createTextNode('金額'));
                                 row.insertCell().appendChild(document.createTextNode(data['data'][i]['pay']));
                             }
@@ -61,6 +62,10 @@ window.btnCreateShow = function () {
                                 row.insertCell().appendChild(document.createTextNode('個人出費'));
                             }
                             row.insertCell().appendChild(document.createTextNode(data['data'][i]['othercomment']));
+                            var fileCrear = document.createElement('i');
+                            fileCrear.onclick = new Function("dayDelete('" + data['data'][i]['day'] + '|' + data['data'][i]['oiban'] + "', 'registerdRowId"+i+"')");
+                            fileCrear.className = 'fas fa-times-circle text-danger';
+                            row.insertCell().appendChild(fileCrear);
 
                             if (data['data'][i]['image']){
                                 var img = document.createElement('img');
@@ -181,4 +186,20 @@ function createSumData(){
     row.insertCell().appendChild(document.createTextNode(sum));
 
     document.getElementById('tableShowData').appendChild(table);
+}
+
+window.dayDelete = function (dayPipeOiban, rowId) {
+    $.ajax({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url: '/dayDelete',
+        dataType: 'JSON',
+        type: 'POST',
+        data: JSON.stringify({
+            'dayPipeOiban': dayPipeOiban,
+        }),
+        success: function (data) {
+            $('#' + rowId).remove();
+        },
+        error: function (jqXHR, textStatus, errorThrown) { alert('削除に失敗しました'); console.log(jqXHR); console.log(textStatus); console.log(errorThrown); }
+    });
 }

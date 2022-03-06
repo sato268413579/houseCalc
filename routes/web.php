@@ -17,13 +17,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'TodayController@view');
-Route::post('/todayRegister', 'TodayController@todayRegister');
-Route::get('/tomonth', 'HouseController@view');
+Route::get('/', 'TodayController@view')->name('today.index');
+Route::post('/todayRegister', 'TodayController@todayRegister')->name('today.register');
+
+Route::get('/tomonth', 'HouseController@view')->name('house.index');
 Route::post('/dataCheck', 'HouseController@dataCheck');
-Route::post('/register', 'HouseController@register');
+Route::post('/register', 'HouseController@register')->name('house.register');
 Route::post('/getAjaxData', 'HouseController@getAjaxData');
+
 Route::get('/beforeMonth', 'BeforeMonthController@view');
 Route::post('/getBeforeData', 'BeforeMonthController@getBeforeData');
-Route::get('/info', 'InfoController@view');
-Route::post('/infoRegister', 'InfoController@register');
+Route::post('/dayDelete', 'BeforeMonthController@dayDelete');
+
+Route::get('/info', 'InfoController@view')->name('info.index');
+Route::post('/infoRegister', 'InfoController@register')->name('info.register');

@@ -13,6 +13,5 @@
     <script src="{{ mix('js/beforeMonthShow.js') }}"></script>
     <script src="{{ mix('js/monthRegister.js') }}"></script>
     <script src="{{ mix('js/todayRegister.js') }}"></script>
-    <script src="{{ mix('js/infoRegister.js') }}"></script>
     <script src="{{ mix('js/navActive.js') }}"></script>
 @endsection

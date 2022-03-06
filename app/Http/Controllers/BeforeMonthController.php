@@ -29,6 +29,7 @@ class BeforeMonthController extends Controller
                 
                 for($i = 0; $i < count($data); $i++){
                     $data[$i]['day'] = str_replace('/', '-', $data[$i]['day']);
+                    $data[$i]['oiban'] = $data[$i]['oiban'];
                     
                     //ファイル名の日付形式が合わないため日付形式を合わせる (例：2021-08-3 → 2021-08-03)
                     $data[$i]['day'] = date('Y-m-d', strtotime($data[$i]['day']));
@@ -52,5 +53,28 @@ class BeforeMonthController extends Controller
         }
 
         return response()->json(['data' => $data]);
+    }
+
+
+    public function dayDelete(Request $request)
+    {
+        $postData = json_decode($request->getContent(), true);
+        
+        $dayPipeOiban = explode('|', $postData['dayPipeOiban']);
+        
+        $fileNameToDay = str_replace('|', '_', $postData['dayPipeOiban']);
+        $folderName = date('Y-m', strtotime($dayPipeOiban[0]));
+        
+        $filePath = 'public/' . $folderName . '/' . $fileNameToDay . '.jpeg';
+        Storage::disk('copy')->delete($filePath);
+
+        $month = date('Y-m', strtotime($dayPipeOiban[0]));
+        $day = date('Y/m/j', strtotime($dayPipeOiban[0]));
+        $oiban = $dayPipeOiban[1];
+        $eatHistories = new EatHistory();
+
+        $result = $eatHistories->dayDelete($month, $day, $oiban);
+
+        return response()->json(['result' => $result]);
     }
 }

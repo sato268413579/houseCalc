@@ -20,7 +20,7 @@ class InfoModel extends Model
     /**
      * 問い合わせ情報登録処理
      */
-    public function register(InfoModel $infoModel, $detailMsg){
+    public function registerToMailSend(InfoModel $infoModel, $detailMsg){
         DB::beginTransaction();
         try{
             $infoModel->save();
