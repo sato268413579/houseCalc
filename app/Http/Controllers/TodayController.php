@@ -37,7 +37,7 @@ class TodayController extends Controller
         $eatHistory['day'] = $request->today;
         $eatHistory['oiban'] = $maxOiban + 1 ?? 1;
         $eatHistory['pay'] = $request->pay;
-        $eatHistory['type'] = $request->type;
+        $eatHistory['type'] = $request->gender;
         $eatHistory['othercomment'] = $request->otherComment ?? '';
         if ($request->type === '1') {
             $files = str_replace('public/' . $eatHistory['month'] . '/', '', Storage::files('public/' . $eatHistory['month']));
