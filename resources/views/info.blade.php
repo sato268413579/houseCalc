@@ -19,7 +19,12 @@
                             @for($i=1; $i<13; $i++)
                                 @for($j=1; $j<32; $j++)
                                     @if(checkdate($i, $j, date('Y')))
-                                        <option>{{date('Y/m/d', strtotime(date('Y/').$i.'/'.$j))}}
+                                        <option
+                                            @if(date('Y/m/d', strtotime(date('Y/').$i.'/'.$j)) === date('Y/m/d'))
+                                                selected
+                                            @endif
+                                        >
+                                            {{date('Y/m/d', strtotime(date('Y/').$i.'/'.$j))}}
                                     @endif
                                 @endfor
                             @endfor

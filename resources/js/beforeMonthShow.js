@@ -81,50 +81,7 @@ window.btnCreateShow = function () {
                         document.getElementById('tableShowData').appendChild(table);
                         break;
                     case 'sum':
-                        // createSumData();
-                        // const table = document.createElement('table');
-                        table.id = 'tblMonth';
-                        table.className = 'table';
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('家賃'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['yatin']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('食費'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['eat']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('ガス代'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['gasu']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('電気代'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['denki']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('水道代'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['suidou']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('通信費'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['tuushin']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('ローン'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['loan']));
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('備考'));
-                        row.insertCell().appendChild(document.createTextNode(data['data']['comment']));
-
-                        sum = data['data']['yatin'] + data['data']['eat'] + data['data']['gasu'] + data['data']['denki'] + data['data']['suidou'] + data['data']['tuushin'] + data['data']['loan'];
-
-                        row = table.insertRow();
-                        row.insertCell().appendChild(document.createTextNode('合計'));
-                        row.insertCell().appendChild(document.createTextNode(sum));
-
-                        document.getElementById('tableShowData').appendChild(table);
+                        createSumData(data);
                         break;
                 }
                 
@@ -141,7 +98,7 @@ window.btnCreateShow = function () {
 }
 
 //指定月の合計金額を作成
-function createSumData(){
+function createSumData(data){
     const table = document.createElement('table');
     
     table.id = 'tblMonth';
@@ -174,6 +131,10 @@ function createSumData(){
     row = table.insertRow();
     row.insertCell().appendChild(document.createTextNode('ローン'));
     row.insertCell().appendChild(document.createTextNode(data['data']['loan']));
+
+    row = table.insertRow();
+    row.insertCell().appendChild(document.createTextNode('個人出費'));
+    row.insertCell().appendChild(document.createTextNode(data['data']['othersum'] ?? 0));
 
     row = table.insertRow();
     row.insertCell().appendChild(document.createTextNode('備考'));

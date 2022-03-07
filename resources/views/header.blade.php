@@ -17,7 +17,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/info">問い合わせ</a>
+                    <a class="nav-link" id="info" href="/info">問い合わせ</a>
                 </li>
             </ul>
         </div>

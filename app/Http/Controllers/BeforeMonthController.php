@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Storage;
 class BeforeMonthController extends Controller
 {
     public function view(){
-        return view('beforeMonth');
+        $model = new MonthHouseCalc();
+        $allMonths = $model->getAllMonth();
+        return view('beforeMonth', compact('allMonths'));
     }
 
     public function getBeforeData(Request $request){

@@ -33,6 +33,14 @@ class MonthHouseCalc extends Model
     public string $loan = '';
     public string $comment = '';
 
+
+    /**
+     * 全てのデータ取得
+     */
+    public function getAllMonth(){
+        return $this::select('month')->orderBy('month', 'asc')->get();
+    }
+
     /**
      * 当月のデータ取得
      */
