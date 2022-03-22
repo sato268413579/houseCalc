@@ -39,7 +39,7 @@ class TodayController extends Controller
         $eatHistory['pay'] = $request->pay;
         $eatHistory['type'] = $request->gender;
         $eatHistory['othercomment'] = $request->otherComment ?? '';
-        if ($request->type === '1') {
+        if ($request->gender === '1') {
             $files = str_replace('public/' . $eatHistory['month'] . '/', '', Storage::files('public/' . $eatHistory['month']));
             
             $maxFileName = preg_grep("!". str_replace('/', '-', $request->today) . "!", $files);
@@ -55,8 +55,8 @@ class TodayController extends Controller
             $fileName = $todayFolderName . '_' . $eatHistory['oiban'] . '.jpeg';
 
             //ファイル保存
+            // Storage::put($filePath, $fileName);
             $request->image->storeAs($filePath, $fileName);
-
             if(Storage::disk('local')->exists($filePath . '/' . $fileName)){
                 Storage::disk('copy')->put($filePath . '/' . $fileName, Storage::disk('local')->get($filePath . '/' . $fileName));
             }

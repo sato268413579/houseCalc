@@ -7,7 +7,7 @@
     </head>
     
     @section('content')
-        <form action="{{ route('today.register') }}" method="POST">
+        <form action="{{ route('today.register') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @if(!is_null(session('message')))
                 <div class="alert alert-success" role="alert">{{ session('message') }}</div>

@@ -62,17 +62,18 @@ window.btnCreateShow = function () {
                                 row.insertCell().appendChild(document.createTextNode('個人出費'));
                             }
                             row.insertCell().appendChild(document.createTextNode(data['data'][i]['othercomment']));
+
+                            var img = document.createElement('img');
+                            if (data['data'][i]['image']) {
+                                img.src = '/img/public/' + data['data'][i]['image'];
+                                img.width = 150;
+                            }
+                            row.insertCell().appendChild(img);
+
                             var fileCrear = document.createElement('i');
                             fileCrear.onclick = new Function("dayDelete('" + data['data'][i]['day'] + '|' + data['data'][i]['oiban'] + "', 'registerdRowId"+i+"')");
                             fileCrear.className = 'fas fa-times-circle text-danger';
                             row.insertCell().appendChild(fileCrear);
-
-                            if (data['data'][i]['image']){
-                                var img = document.createElement('img');
-                                img.src = '/img/public/' + data['data'][i]['image'];
-                                img.width = 150;
-                                row.insertCell().appendChild(img);
-                            }
                             
                             oldDay = data['data'][i]['day'];
                         }
@@ -140,7 +141,7 @@ function createSumData(data){
     row.insertCell().appendChild(document.createTextNode('備考'));
     row.insertCell().appendChild(document.createTextNode(data['data']['comment']));
 
-    sum = data['data']['yatin'] + data['data']['eat'] + data['data']['gasu'] + data['data']['denki'] + data['data']['suidou'] + data['data']['tuushin'] + data['data']['loan'];
+    sum = data['data']['yatin'] + data['data']['eat'] + data['data']['gasu'] + data['data']['denki'] + data['data']['suidou'] + data['data']['tuushin'] + data['data']['loan'] + data['data']['othersum'];
 
     row = table.insertRow();
     row.insertCell().appendChild(document.createTextNode('合計'));
