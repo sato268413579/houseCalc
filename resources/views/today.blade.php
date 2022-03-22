@@ -17,7 +17,7 @@
             </header>
             <div class="form-group">
                 <label for="text1">日付</label>
-                <select id="today" name="today" class="form-control w-25">
+                <select id="today" name="today" class="form-control w-50">
                     @for($i = 1; $i <= date('t'); $i++)
                         @if(date('d') == $i)
                             <option selected="selected">{{date('Y/').date('m/').$i}}</option>

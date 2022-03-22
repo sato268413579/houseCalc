@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <select id="toMonth" class="form-control w-25">
+                <select id="toMonth" class="form-control w-50">
                     @foreach($allMonths as $month)
                         <option>{{ date('Y/m', strtotime($month['month'] . '/01')) }}
                     @endforeach

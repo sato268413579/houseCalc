@@ -20,7 +20,7 @@
                 </div>
             @endif
             
-            <select onchange="getMonthData()" name="toMonth" id="toMonth" class="form-control w-25">
+            <select onchange="getMonthData()" name="toMonth" id="toMonth" class="form-control w-50">
                 @for($i = 1; $i < 13;$i++)
                     @if(date('m') == $i)
                         <option selected="selected">{{date('Y/m', strtotime(date('Y/').$i.'/1'))}}
@@ -36,7 +36,7 @@
             </div> --}}
             <div class="form-group">
                 <label for="yatin">家賃</label>
-                <input type="text" id="yatin" name="yatin" class="form-control" value="63000" disabled="disable">
+                <input type="text" id="yatin" name="yatin" class="form-control" value="63000" readonly>
             </div>
             <div class="form-group">
                 <label for="syokuhi">食費</label>
@@ -60,7 +60,7 @@
             </div>
             <div class="form-group">
                 <label for="loan">ローン</label>
-                <input type="text" id="loan" name="loan" class="form-control" value={{$toMonthData['loan'] ?? 0}}>
+                <input type="text" id="loan" name="loan" class="form-control" value="10450" readonly>
             </div>
             <div class="form-group">
                 <label for="otherSum">個人出費</label>
