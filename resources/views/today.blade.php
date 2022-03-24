@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-check form-check-inline">
                     <input type="radio" class="form-check-input" value="2" name="gender" id="other">
-                    <label for="other" class="mb-0">その他</label>
+                    <label for="other" class="mb-0">個人出費(夫)</label>
                 </div>
             </div>
             
@@ -51,7 +51,7 @@
             </div>
             <div id="commentDisp" class="form-gtoup" style="display:none;">
                 <label>備考</label>
-                <textarea id="otherComment" class="form-control">{{$toMonthData['comment'] ?? ''}}</textarea>
+                <textarea id="otherComment" name="otherComment" class="form-control">{{$toMonthData['comment'] ?? ''}}</textarea>
             </div>
             <div class="btn-group ml-auto">
                 <button class="btn btn-success text-right">登録</button>
