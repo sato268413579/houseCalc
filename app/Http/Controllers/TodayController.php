@@ -14,22 +14,6 @@ class TodayController extends Controller
     }
 
     public function todayRegister(Request $request){
-        // $postData = json_decode($request->getContent(), true);
-
-        // $eatHistory = new EatHistory();
-        // $maxOiban = $eatHistory->getMaxOiban(date('Y-m',strtotime($postData['today'])), $postData['today']);
-    
-        // $eatHistory['month'] = date('Y-m',strtotime($postData['today']));
-        // $eatHistory['day'] = $postData['today'];
-        // $eatHistory['oiban'] = $maxOiban + 1 ?? 1;
-        // $eatHistory['pay'] = $postData['pay'];
-        // $eatHistory['type'] = $postData['type'];
-        
-        // dd($request->image->storeAs('public', $request->image->getClientOriginalName()));
-
-        
-        
-
         $eatHistory = new EatHistory();
         $maxOiban = $eatHistory->getMaxOiban(date('Y-m',strtotime($request->today)), $request->today);
     
