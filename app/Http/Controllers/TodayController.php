@@ -14,6 +14,7 @@ class TodayController extends Controller
     }
 
     public function todayRegister(Request $request){
+
         $eatHistory = new EatHistory();
         $maxOiban = $eatHistory->getMaxOiban(date('Y-m',strtotime($request->today)), $request->today);
     
